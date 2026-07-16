@@ -2,57 +2,174 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Men Collection | Moni's Luxe</title>
 
     <link rel="stylesheet" href="../style.css">
+
 </head>
+
 
 <body>
 
+
+    <!-- CART -->
+
     <div class="cart-info">
+
         <a href="cart.html">
+
             🛒 Cart :
             <span id="cartCount">0</span>
+
         </a>
+
     </div>
 
-    <h1 class="page-title">Men Collection</h1>
+
+
+    <!-- PAGE TITLE -->
+
+    <h1 class="page-title">
+        Men Collection
+    </h1>
+
+
+
+    <!-- SEARCH -->
+
     <div class="search-container">
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="🔍 Search products...">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search products...">
 
-</div>
-<div class="filter-container">
+    </div>
 
-    <label for="categoryFilter">Category:</label>
 
-    <select id="categoryFilter">
 
-        <option value="All">All Categories</option>
 
-        <option value="Shalwar Kameez">Shalwar Kameez</option>
+    <!-- FILTERS SECTION -->
 
-        <option value="Shirt">Shirt</option>
+    <div class="filters-wrapper">
 
-        <option value="Jeans">Jeans</option>
 
-        <option value="Pant">Pant</option>
+        <!-- CATEGORY FILTER -->
 
-        <option value="Waistcoat">Waistcoat</option>
+        <div class="filter-container">
 
-    </select>
+            <label for="categoryFilter">
+                Category:
+            </label>
 
-</div>
+
+            <select id="categoryFilter">
+
+                <option value="All">
+                    All Categories
+                </option>
+
+                <option value="Shalwar Kameez">
+                    Shalwar Kameez
+                </option>
+
+                <option value="Shirt">
+                    Shirt
+                </option>
+
+                <option value="Jeans">
+                    Jeans
+                </option>
+
+                <option value="Pant">
+                    Pant
+                </option>
+
+                <option value="Waistcoat">
+                    Waistcoat
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+
+
+
+        <!-- SORT FILTER -->
+
+        <div class="sort-container">
+
+
+            <label for="sortProducts">
+                Sort By:
+            </label>
+
+
+            <select id="sortProducts">
+
+
+                <option value="default">
+                    Default
+                </option>
+
+
+                <option value="low-high">
+                    Price: Low → High
+                </option>
+
+
+                <option value="high-low">
+                    Price: High → Low
+                </option>
+
+
+                <option value="rating">
+                    Highest Rated
+                </option>
+
+
+                <option value="name">
+                    Name: A → Z
+                </option>
+
+
+            </select>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- PRODUCTS -->
 
     <div id="productContainer"></div>
 
+
+
+
+
+    <!-- JAVASCRIPT FILES -->
+
     <script src="../js/products.js"></script>
+
     <script src="../script.js"></script>
 
+
+
 </body>
+
 </html>
