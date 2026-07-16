@@ -25,10 +25,38 @@ function displayProducts(products) {
     if (!container) return;
 
     container.innerHTML = "";
+    // No Products Found
+
+if(products.length === 0){
+
+    container.innerHTML = `
+
+        <div class="no-products">
+
+            <h2>🔍 No Products Found</h2>
+
+            <p>Try another search or category.</p>
+
+        </div>
+
+    `;
+
+    return;
+
+}
 
     products.forEach(function(product){
 
         const card = document.createElement("div");
+        card.style.cursor = "pointer";
+
+card.addEventListener("click", function(){
+
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
+
+    window.location.href = "product-details.html";
+
+});
 
         card.className = "product-card";
 
@@ -53,7 +81,7 @@ function displayProducts(products) {
         const button = card.querySelector("button");
 
         button.addEventListener("click", function(){
-
+            event.stopPropagation();
             cart.push(product);
 
             localStorage.setItem("cart", JSON.stringify(cart));
@@ -298,3 +326,79 @@ function removeFromCart(index){
 // ===============================
 
 loadCart();
+// ===============================
+// PRODUCT DETAILS PAGE
+// ===============================
+
+function loadProductDetails(){
+
+    const container = document.getElementById("productDetails");
+
+    if(!container){
+        return;
+    }
+
+    const product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+    if(!product){
+
+        container.innerHTML = "<h2>Product Not Found</h2>";
+
+        return;
+
+    }
+
+    container.innerHTML = `
+
+        <div class="details-card">
+
+            <img src="${product.image}" alt="${product.name}">
+
+            <div class="details-info">
+
+                <h2>${product.name}</h2>
+
+                <p><strong>Category:</strong> ${product.category}</p>
+
+                <h3 class="price">
+                    Rs. ${product.price.toLocaleString()}
+                </h3>
+
+                <p class="rating">
+                    ⭐ ${product.rating} / 5
+                </p>
+
+                <p class="description">
+
+                    Premium quality product from Moni's Luxe.
+                    Comfortable fabric with elegant design.
+
+                </p>
+
+                <button id="detailsCartBtn">
+                    Add To Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+    const button = document.getElementById("detailsCartBtn");
+
+    button.addEventListener("click",function(){
+
+        cart.push(product);
+
+        localStorage.setItem("cart",JSON.stringify(cart));
+
+        updateCartCount();
+
+        alert(product.name + " Added To Cart");
+
+    });
+
+}
+
+loadProductDetails();
