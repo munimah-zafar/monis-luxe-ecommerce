@@ -83,6 +83,33 @@ if (typeof menProducts !== "undefined") {
     displayProducts(menProducts);
 
     const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+
+if(categoryFilter){
+
+    categoryFilter.addEventListener("change", function(){
+
+        const selectedCategory = this.value;
+
+        if(selectedCategory === "All"){
+
+            displayProducts(menProducts);
+
+            return;
+
+        }
+
+        const filteredProducts = menProducts.filter(function(product){
+
+            return product.category === selectedCategory;
+
+        });
+
+        displayProducts(filteredProducts);
+
+    });
+
+}
 
     if (searchInput) {
 

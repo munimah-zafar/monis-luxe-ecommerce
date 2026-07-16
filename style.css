@@ -907,3 +907,58 @@ font-size:18px;
     box-shadow:0 0 10px rgba(255,215,0,.4);
 
 }
+/* ==========================
+   CATEGORY FILTER
+========================== */
+
+.filter-container{
+
+    width:90%;
+
+    margin:20px auto 40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.filter-container label{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#0b1d39;
+
+}
+
+#categoryFilter{
+
+    padding:12px 18px;
+
+    border:2px solid #ddd;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    outline:none;
+
+    transition:0.3s;
+
+}
+
+#categoryFilter:focus{
+
+    border-color:#FFD700;
+
+    box-shadow:0 0 8px rgba(255,215,0,0.4);
+
+}
