@@ -1185,3 +1185,113 @@ font-size:18px;
     color:black;
 
 }
+
+/* ==========================
+   CHECKOUT PAGE
+========================== */
+
+.checkout-card{
+
+    max-width:1000px;
+
+    margin:60px auto;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    display:flex;
+
+    gap:40px;
+
+    padding:40px;
+
+    align-items:center;
+
+}
+
+.checkout-card img{
+
+    width:350px;
+
+    height:450px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+.checkout-info{
+
+    flex:1;
+
+}
+
+.checkout-info h2{
+
+    font-size:36px;
+
+    color:#0b1d39;
+
+    margin-bottom:20px;
+
+}
+
+.checkout-info p{
+
+    font-size:18px;
+
+    margin:15px 0;
+
+}
+
+.checkout-info .price{
+
+    font-size:30px;
+
+    color:#d4a017;
+
+    font-weight:bold;
+
+}
+
+.checkout-info .rating{
+
+    font-size:22px;
+
+    color:#ff9800;
+
+}
+
+#placeOrderBtn{
+
+    margin-top:30px;
+
+    padding:15px 40px;
+
+    background:#0b1d39;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+#placeOrderBtn:hover{
+
+    background:#FFD700;
+
+    color:black;
+
+}

@@ -25,42 +25,38 @@ function displayProducts(products) {
     if (!container) return;
 
     container.innerHTML = "";
+
     // No Products Found
+    if (products.length === 0) {
 
-if(products.length === 0){
+        container.innerHTML = `
+            <div class="no-products">
+                <h2>🔍 No Products Found</h2>
+                <p>Try another search or category.</p>
+            </div>
+        `;
 
-    container.innerHTML = `
-
-        <div class="no-products">
-
-            <h2>🔍 No Products Found</h2>
-
-            <p>Try another search or category.</p>
-
-        </div>
-
-    `;
-
-    return;
-
-}
+        return;
+    }
 
     products.forEach(function(product){
 
         const card = document.createElement("div");
-        card.style.cursor = "pointer";
-
-card.addEventListener("click", function(){
-
-    localStorage.setItem("selectedProduct", JSON.stringify(product));
-
-    window.location.href = "product-details.html";
-
-});
 
         card.className = "product-card";
 
+        card.style.cursor = "pointer";
+
+        card.addEventListener("click", function(){
+
+            localStorage.setItem("selectedProduct", JSON.stringify(product));
+
+            window.location.href = "product-details.html";
+
+        });
+
         card.innerHTML = `
+
             <img src="${product.image}" alt="${product.name}">
 
             <h2>${product.name}</h2>
@@ -76,12 +72,15 @@ card.addEventListener("click", function(){
             </p>
 
             <button>Add To Cart</button>
+
         `;
 
         const button = card.querySelector("button");
 
-        button.addEventListener("click", function(){
+        button.addEventListener("click", function(event){
+
             event.stopPropagation();
+
             cart.push(product);
 
             localStorage.setItem("cart", JSON.stringify(cart));
@@ -97,7 +96,6 @@ card.addEventListener("click", function(){
     });
 
 }
-
 // ===============================
 // MEN PAGE
 // ===============================
@@ -375,9 +373,17 @@ function loadProductDetails(){
 
                 </p>
 
-                <button id="detailsCartBtn">
-                    Add To Cart
-                </button>
+               <div class="details-buttons">
+
+    <button id="detailsCartBtn">
+        Add To Cart
+    </button>
+
+    <button id="buyNowBtn">
+        Buy Now
+    </button>
+
+</div>
 
             </div>
 
@@ -398,7 +404,108 @@ function loadProductDetails(){
         alert(product.name + " Added To Cart");
 
     });
+    const buyNowBtn = document.getElementById("buyNowBtn");
+
+buyNowBtn.addEventListener("click", function(){
+
+    localStorage.setItem("checkoutProduct", JSON.stringify(product));
+
+    window.location.href = "checkout.html";
+
+});
 
 }
 
 loadProductDetails();
+
+// ===============================
+// CHECKOUT PAGE
+// ===============================
+
+function loadCheckout(){
+
+    const container = document.getElementById("checkoutContainer");
+
+    if(!container){
+        return;
+    }
+
+    const product = JSON.parse(localStorage.getItem("checkoutProduct"));
+
+    if(!product){
+
+        container.innerHTML = "<h2>No Product Selected</h2>";
+
+        return;
+
+    }
+
+    container.innerHTML = `
+
+        <div class="checkout-card">
+
+            <img src="${product.image}" alt="${product.name}">
+
+            <div class="checkout-info">
+
+                <h2>${product.name}</h2>
+
+                <p><strong>Category:</strong> ${product.category}</p>
+
+                <h3 class="price">
+                    Rs. ${product.price.toLocaleString()}
+                </h3>
+
+                <p class="rating">
+                    ⭐ ${product.rating} / 5
+                </p>
+
+                <form id="checkoutForm">
+
+    <input
+        type="text"
+        placeholder="Full Name"
+        required>
+
+    <input
+        type="email"
+        placeholder="Email Address"
+        required>
+
+    <input
+        type="text"
+        placeholder="Phone Number"
+        required>
+
+    <textarea
+        placeholder="Delivery Address"
+        rows="4"
+        required></textarea>
+
+    <button id="placeOrderBtn" type="submit">
+        Place Order
+    </button>
+
+</form>
+            </div>
+
+        </div>
+
+    `;
+    const checkoutForm = document.getElementById("checkoutForm");
+
+checkoutForm.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    alert("🎉 Order Placed Successfully!");
+
+    localStorage.removeItem("checkoutProduct");
+
+    window.location.href = "../index.html";
+
+});
+
+}
+
+loadCheckout();
