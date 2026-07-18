@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Your Cart</title>
+    <title>Your Cart | MZ Luxe</title>
 
     <link rel="stylesheet" href="../style.css">
 
@@ -16,17 +16,30 @@
 
 <body>
 
-<h1 style="text-align:center;margin-top:30px;">
-    🛒 Your Shopping Cart
-</h1>
+    <h1 class="cart-heading">
+        🛒 Your Shopping Cart
+    </h1>
 
-<div id="cartItems">
+    <!-- Cart Products -->
+    <div id="cartItems"></div>
 
-</div>
+    <!-- Total Price -->
+    <div id="totalPrice"></div>
 
-<h2 id="totalPrice" style="text-align:center;margin:30px;"></h2>
+    <!-- Buttons -->
+    <div class="cart-buttons">
 
-<script src="../script.js"></script>
+        <button id="clearCartBtn">
+            🗑 Clear Cart
+        </button>
+
+        <button id="checkoutBtn">
+            💳 Proceed To Checkout
+        </button>
+
+    </div>
+
+    <script src="../script.js"></script>
 
 </body>
 

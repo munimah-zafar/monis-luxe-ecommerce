@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Collection | Moni's Luxe</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-page="women"></body>
+
+    <div class="cart-info">
+        <a href="cart.html">
+            🛒 Cart :
+            <span id="cartCount">0</span>
+        </a>
+    </div>
+
+    <h1 class="page-title">Women Collection</h1>
+
+    <div class="search-container">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search products...">
+
+    </div>
+
+    <div class="filter-container">
+
+        <div class="sort-container">
+
+            <label for="sortProducts">Sort By:</label>
+
+            <select id="sortProducts">
+
+                <option value="default">Default</option>
+                <option value="low-high">Price: Low → High</option>
+                <option value="high-low">Price: High → Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="name">Name: A → Z</option>
+
+            </select>
+
+        </div>
+
+        <label for="categoryFilter">Category:</label>
+
+        <select id="categoryFilter">
+
+    <option value="All">All Categories</option>
+
+    <option value="Lawn Suit">Lawn Suit</option>
+
+    <option value="Cotton Suit">Cotton Suit</option>
+
+    <option value="Kurti">Kurti</option>
+
+    <option value="Chiffon Suit">Chiffon Suit</option>
+
+    <option value="Linen Suit">Linen Suit</option>
+
+    <option value="Silk Suit">Silk Suit</option>
+
+    <option value="Organza Suit">Organza Suit</option>
+
+    <option value="Velvet Suit">Velvet Suit</option>
+
+    <option value="Maxi">Maxi</option>
+
+    <option value="Abaya">Abaya</option>
+
+    <option value="Festive Wear">Festive Wear</option>
+
+</select>
+
+    </div>
+
+    <div id="productContainer"></div>
+
+    <script src="../js/products.js"></script>
+    <script src="../script.js"></script>
+
+</body>
+</html>

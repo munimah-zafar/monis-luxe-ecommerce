@@ -1295,3 +1295,274 @@ font-size:18px;
     color:black;
 
 }
+
+#clearCartBtn{
+
+    display:block;
+
+    margin:30px auto;
+
+    padding:15px 35px;
+
+    background:#c62828;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#clearCartBtn:hover{
+
+    background:#8e0000;
+
+}
+
+/* ===========================
+   CART BUTTONS
+=========================== */
+
+/* ==========================
+   CART PAGE
+========================== */
+
+.cart-heading{
+
+    text-align:center;
+    margin:30px 0;
+    font-size:35px;
+    color:#222;
+
+}
+
+#totalPrice{
+
+    text-align:center;
+    margin:35px 0;
+    font-size:28px;
+    font-weight:bold;
+
+}
+
+.cart-buttons{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    margin:30px auto 50px;
+
+}
+
+.cart-buttons button{
+
+    width:240px;
+    padding:15px;
+    font-size:18px;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+#clearCartBtn{
+
+    background:#dc3545;
+    color:white;
+
+}
+
+#clearCartBtn:hover{
+
+    background:#b02a37;
+
+}
+
+#checkoutBtn{
+
+    background:#198754;
+    color:white;
+
+}
+
+#checkoutBtn:hover{
+
+    background:#157347;
+
+}
+
+#clearCartBtn,
+#checkoutBtn{
+
+    min-width: 220px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+#clearCartBtn{
+
+    background-color: #dc3545;
+    color: white;
+
+}
+
+#checkoutBtn{
+
+    background-color: #198754;
+    color: white;
+
+}
+
+#clearCartBtn:hover{
+
+    background-color: #bb2d3b;
+
+}
+
+#checkoutBtn:hover{
+
+    background-color: #157347;
+
+}
+
+.cart-buttons button{
+
+    padding:15px 35px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+/* Clear Cart */
+
+#clearCartBtn{
+
+    background:#d9534f;
+
+    color:white;
+
+}
+
+#clearCartBtn:hover{
+
+    background:#c9302c;
+
+}
+
+/* Checkout */
+
+#checkoutBtn{
+
+    background:#198754;
+
+    color:white;
+
+}
+
+#checkoutBtn:hover{
+
+    background:#157347;
+
+}
+
+/* ==========================
+   CART PAGE BUTTONS
+========================== */
+
+.cart-buttons{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px auto;
+    width: 100%;
+
+}
+
+#clearCartBtn,
+#checkoutBtn{
+
+    width: 220px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+
+}
+
+#clearCartBtn{
+
+    background: #dc3545;
+
+}
+
+#checkoutBtn{
+
+    background: #198754;
+
+}
+
+#clearCartBtn:hover{
+
+    background: #bb2d3b;
+
+}
+
+#checkoutBtn:hover{
+
+    background: #157347;
+
+}
+
+
+.cart-buttons{
+
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    width:100% !important;
+    gap:20px !important;
+    margin:40px auto !important;
+
+}
+
+#clearCartBtn,
+#checkoutBtn{
+
+    width:220px !important;
+    padding:15px 20px !important;
+    font-size:18px !important;
+    display:inline-block !important;
+
+}
+
