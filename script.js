@@ -908,3 +908,153 @@ document.addEventListener("DOMContentLoaded", function(){
 // ======================================
 
 console.log("✅ MZ Luxe Loaded Successfully");
+
+// ================= SIGNUP =================
+
+const signupForm = document.getElementById("signupForm");
+
+if (signupForm) {
+
+    signupForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+
+            alert("Passwords do not match!");
+            return;
+
+        }
+
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        const existingUser = users.find(user => user.email === email);
+
+        if (existingUser) {
+
+            alert("Email already exists!");
+            return;
+
+        }
+
+        users.push({
+
+            name: name,
+            email: email,
+            password: password
+
+        });
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        alert("Account Created Successfully!");
+
+        window.location.href = "login.html";
+
+    });
+
+}
+
+// ================= LOGIN =================
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+    loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value;
+
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        const user = users.find(function(u){
+
+            return u.email === email && u.password === password;
+
+        });
+
+        if (!user){
+
+            alert("Invalid Email or Password!");
+            return;
+
+        }
+
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+
+        alert("Login Successful!");
+
+        window.location.href = "index.html";
+
+    });
+
+}
+
+// ================= NAVBAR LOGIN =================
+
+const loginLink = document.getElementById("loginLink");
+
+if (loginLink) {
+
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (loggedInUser) {
+
+        loginLink.textContent = "My Account";
+        loginLink.href = "account.html";
+
+    }
+
+}
+
+// ================= MY ACCOUNT =================
+
+// ================= MY ACCOUNT =================
+
+const userName = document.getElementById("userName");
+const userEmail = document.getElementById("userEmail");
+
+if (userName && userEmail) {
+
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (!loggedInUser) {
+
+        alert("Please login first!");
+
+        window.location.href = "login.html";
+
+    } else {
+
+        userName.textContent = loggedInUser.name;
+        userEmail.textContent = loggedInUser.email;
+
+    }
+
+}
+
+// ================= ACCOUNT LOGOUT =================
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", function () {
+
+        localStorage.removeItem("loggedInUser");
+
+        alert("Logged Out Successfully!");
+
+        window.location.href = "login.html";
+
+    });
+
+}
