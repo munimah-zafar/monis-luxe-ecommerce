@@ -43,19 +43,25 @@ updateCartCount();
 
 let pageProducts = [];
 
-const currentPage = document.body.dataset.page;
+function initPageProducts() {
 
-if(currentPage === "men"){
+    if(!document.body || !document.body.dataset){
+        return;
+    }
 
-    pageProducts = [...menProducts];
+    const currentPage = document.body.dataset.page;
+
+    if(currentPage === "men"){
+        pageProducts = [...menProducts];
+    }
+
+    else if(currentPage === "women"){
+        pageProducts = [...womenProducts];
+    }
 
 }
 
-else if(currentPage === "women"){
-
-    pageProducts = [...womenProducts];
-
-}
+initPageProducts();
 
 
 // ----------------------------
@@ -242,7 +248,7 @@ function displayProducts(products){
 
     }
 
-    products.forEach(function(product){
+    products.forEach(function(product,index){
 
         const card = document.createElement("div");
 
@@ -873,6 +879,8 @@ updateCartCount();
 
 document.addEventListener("DOMContentLoaded", function(){
 
+    initPageProducts();
+
     // Products Page
     if(document.getElementById("productContainer")){
 
@@ -1057,4 +1065,131 @@ if (logoutBtn) {
 
     });
 
+}
+
+// ================= ADMIN PANEL =================
+let editIndex = -1;
+const productForm = document.getElementById("productForm");
+
+if (productForm) {
+
+    displayAdminProducts();
+
+    productForm.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        const name = document.getElementById("productName").value.trim();
+        const price = document.getElementById("productPrice").value;
+        const image = document.getElementById("productImage").value.trim();
+       
+        let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
+       if (editIndex >= 0 && products[editIndex]) {
+
+    // Update existing product
+    products[editIndex] = {
+        name,
+        price,
+        image
+    };
+
+    editIndex = -1;
+
+}
+else {
+
+    // Add new product
+    products.push({
+        name,
+        price,
+        image
+    });
+
+}
+
+        localStorage.setItem("adminProducts", JSON.stringify(products));
+
+        productForm.reset();
+        document.getElementById("productForm").querySelector("button[type='submit']").textContent = "Add Product";
+
+        displayAdminProducts();
+
+    });
+
+}
+
+function displayAdminProducts(){
+
+    const adminProducts = document.getElementById("adminProducts");
+
+    if(!adminProducts) return;
+
+    let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
+
+    adminProducts.innerHTML = "";
+
+    products.forEach(function(product, index){
+
+       adminProducts.innerHTML += `
+
+<div class="admin-product">
+
+    <img src="${product.image}" alt="${product.name}">
+
+    <h3>${product.name}</h3>
+
+    <p>Rs ${product.price}</p>
+
+    <button type="button" onclick="deleteProduct(${index})">
+        Delete
+    </button>
+    <button type="button" onclick="editProduct(${index})">
+    Edit
+</button>
+
+</div>
+
+`;
+
+    });
+
+}
+
+function deleteProduct(index){
+
+    let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
+
+    products.splice(index,1);
+
+    localStorage.setItem("adminProducts", JSON.stringify(products));
+
+    displayAdminProducts();
+
+}
+
+function editProduct(index){
+
+    let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
+
+    const product = products[index];
+
+    if (!product) return;
+
+    const nameInput = document.getElementById("productName");
+    const priceInput = document.getElementById("productPrice");
+    const imageInput = document.getElementById("productImage");
+
+    if (nameInput) nameInput.value = product.name;
+    if (priceInput) priceInput.value = product.price;
+    if (imageInput) imageInput.value = product.image;
+
+    editIndex = index;
+
+    const form = document.getElementById("productForm");
+    const submitButton = form ? form.querySelector("button[type='submit']") : null;
+    if (submitButton) {
+        submitButton.textContent = "Update Product";
+    }
+
+    if (nameInput) nameInput.focus();
 }

@@ -1481,3 +1481,46 @@ body.page-centered .signup-section{
 
 }
 
+/* ================= ADMIN PANEL ================= */
+
+#adminProducts{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:20px;
+
+}
+
+.admin-product{
+
+    width:220px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    background:#fff;
+
+}
+
+.admin-product img{
+
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:8px;
+
+}
+
+.admin-product h3{
+
+    margin:10px 0;
+
+}
+
+.admin-product p{
+
+    font-weight:bold;
+
+}
+
