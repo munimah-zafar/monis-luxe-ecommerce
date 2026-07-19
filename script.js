@@ -51,13 +51,34 @@ function initPageProducts() {
 
     const currentPage = document.body.dataset.page;
 
-    if(currentPage === "men"){
-        pageProducts = [...menProducts];
-    }
+   let adminProducts =
+JSON.parse(localStorage.getItem("adminProducts")) || [];
 
-    else if(currentPage === "women"){
-        pageProducts = [...womenProducts];
-    }
+if(currentPage === "men"){
+
+    const menAdminProducts = adminProducts.filter(function(product){
+        return product.category === "men";
+    });
+
+    pageProducts = [
+        ...menProducts,
+        ...menAdminProducts
+    ];
+
+}
+
+else if(currentPage === "women"){
+
+    const womenAdminProducts = adminProducts.filter(function(product){
+        return product.category === "women";
+    });
+
+    pageProducts = [
+        ...womenProducts,
+        ...womenAdminProducts
+    ];
+
+}
 
 }
 
@@ -1082,29 +1103,35 @@ if (productForm) {
         const name = document.getElementById("productName").value.trim();
         const price = document.getElementById("productPrice").value;
         const image = document.getElementById("productImage").value.trim();
+        const category = document.getElementById("productCategory").value;
        
         let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
        if (editIndex >= 0 && products[editIndex]) {
 
     // Update existing product
     products[editIndex] = {
-        name,
-        price,
-        image
-    };
+    name,
+    price,
+    image,
+    category,
+    rating: products[editIndex].rating || 4.5
+};
 
     editIndex = -1;
-
+    alert("Product updated successfully!");
 }
+
 else {
 
     // Add new product
-    products.push({
-        name,
-        price,
-        image
-    });
-
+   products.push({
+    name,
+    price,
+    image,
+    category,
+    rating: 4.5
+});
+ alert("Product added successfully!");
 }
 
         localStorage.setItem("adminProducts", JSON.stringify(products));
@@ -1154,16 +1181,24 @@ function displayAdminProducts(){
     });
 
 }
-
 function deleteProduct(index){
+
+    if(!confirm("Are you sure you want to delete this product?")){
+        return;
+    }
 
     let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
 
-    products.splice(index,1);
+    products.splice(index, 1);
 
-    localStorage.setItem("adminProducts", JSON.stringify(products));
+    localStorage.setItem(
+        "adminProducts",
+        JSON.stringify(products)
+    );
 
     displayAdminProducts();
+
+    alert("Product deleted successfully!");
 
 }
 
@@ -1178,6 +1213,9 @@ function editProduct(index){
     const nameInput = document.getElementById("productName");
     const priceInput = document.getElementById("productPrice");
     const imageInput = document.getElementById("productImage");
+    const categoryInput = document.getElementById("productCategory");
+
+if (categoryInput) categoryInput.value = product.category;
 
     if (nameInput) nameInput.value = product.name;
     if (priceInput) priceInput.value = product.price;
@@ -1194,17 +1232,3 @@ function editProduct(index){
     if (nameInput) nameInput.focus();
 }
 
-function deleteProduct(index){
-
-    let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
-
-    products.splice(index, 1);
-
-    localStorage.setItem(
-        "adminProducts",
-        JSON.stringify(products)
-    );
-
-    displayAdminProducts();
-
-}
