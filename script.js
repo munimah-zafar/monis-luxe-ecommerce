@@ -1193,3 +1193,18 @@ function editProduct(index){
 
     if (nameInput) nameInput.focus();
 }
+
+function deleteProduct(index){
+
+    let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
+
+    products.splice(index, 1);
+
+    localStorage.setItem(
+        "adminProducts",
+        JSON.stringify(products)
+    );
+
+    displayAdminProducts();
+
+}
