@@ -1524,3 +1524,105 @@ body.page-centered .signup-section{
 
 }
 
+.order-card{
+
+    width:500px;
+    background:#fff;
+    margin:20px auto;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+}
+
+.order-card h2{
+
+    margin-bottom:15px;
+
+}
+
+.order-card p{
+
+    margin:8px 0;
+
+}
+
+.order-card h3{
+
+    color:green;
+    margin-top:15px;
+
+}
+
+.delete-order-btn{
+
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:8px;
+    background:#dc3545;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+
+}
+
+.delete-order-btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+.dashboard-stats{
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:30px 0;
+    flex-wrap:wrap;
+
+}
+
+.stat-card{
+
+    width:220px;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+}
+
+.stat-card h2{
+
+    font-size:40px;
+    color:#8B0000;
+    margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.search-box{
+
+    width:500px;
+    margin:20px auto;
+
+}
+
+.search-box input{
+
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    border:1px solid #ccc;
+    border-radius:8px;
+
+}

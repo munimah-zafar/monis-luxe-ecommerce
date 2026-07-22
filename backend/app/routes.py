@@ -179,6 +179,33 @@ def delete_order(
 
     }
 
+@router.put("/orders/{order_id}")
+def update_order_status(
+    order_id: int,
+    status_data: dict,
+    db: Session = Depends(get_db)
+):
+
+    order = db.query(Order).filter(
+        Order.id == order_id
+    ).first()
+
+    if not order:
+        raise HTTPException(
+            status_code=404,
+            detail="Order not found"
+        )
+
+    order.status = status_data["status"]
+
+    db.commit()
+    db.refresh(order)
+
+    return {
+        "message": "Order status updated successfully",
+        "status": order.status
+    }
+
 
 @router.get("/{gender}", response_model=list[ProductResponse])
 def get_products_by_gender(

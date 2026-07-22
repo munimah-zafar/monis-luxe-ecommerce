@@ -31,7 +31,8 @@ class OrderBase(BaseModel):
     address: str
 
     total: float
-
+    
+    status: str = "Pending"
 
 class OrderCreate(OrderBase):
     pass

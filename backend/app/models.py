@@ -30,3 +30,5 @@ class Order(Base):
     address = Column(Text, nullable=False)
 
     total = Column(DECIMAL(10,2), nullable=False)
+
+    status = Column(String, default="Pending")

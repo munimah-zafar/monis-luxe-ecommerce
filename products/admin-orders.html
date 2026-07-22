@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Orders | MZ Luxe</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body class="page-centered">
+
+    <h1 class="page-title">
+        Admin Orders
+    </h1>
+     <div class="dashboard-stats">
+
+    <div class="stat-card">
+
+        <h2 id="totalProducts">0</h2>
+
+        <p>Total Products</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2 id="totalOrders">0</h2>
+
+        <p>Total Orders</p>
+
+    </div>
+
+</div>
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchOrder"
+        placeholder="Search by customer name..."
+        onkeyup="searchOrders()">
+
+</div>
+
+<div id="ordersContainer"></div>
+    <div id="ordersContainer">
+
+    </div>
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>
